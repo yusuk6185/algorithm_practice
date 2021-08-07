@@ -14,3 +14,12 @@ for i in range(n):
 
 # print the maximum number among the mininum number list.
 print(max(min_num))
+
+# input example
+# 3 3
+# 3 1 2
+# 4 1 4
+# 2 2 2
+
+# output example
+# 2
