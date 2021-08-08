@@ -4,10 +4,18 @@
 n = int(input())
 cnt = 0
 
-for k in range(0, n+1):
-    for i in range(0, 60):
-        for j in range(0, 60):
-            if '3' in (str(k) + str(i) + str(j)):
+# create nested for loops for hour, minute, and second.
+for h in range(n+1):
+    for m in range(60):
+        for s in range(60):
+            # convert to str and combine them to find numbber 3 in it.
+            if '3' in str(h) + str(m) + str(s):
                 cnt += 1
 
 print(cnt)
+
+# example input
+# 5
+
+# example output
+# 11475
