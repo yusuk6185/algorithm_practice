@@ -18,3 +18,9 @@ for k in range(len(move)):
 
 print(row, col, end=' ')
 
+# example input
+# 5
+# R R R U D D
+
+# example output
+# 3 4
