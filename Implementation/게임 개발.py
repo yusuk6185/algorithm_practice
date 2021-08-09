@@ -9,3 +9,76 @@
 # 유지한 채로 한칸 뒤로 가고 1단계로 돌아간다. 이때 뒤쪽 방향이 바다라면 움직임을 멈춘다.
 
 # 캐릭터가 방문한 칸의 수를 출력하는 프로그램을 만드시오.
+
+n, m = map(int, input().split())
+
+# create board with 0
+board = [[0 for i in range(m)] for j in range(n)]
+
+# take x, y axis and inital direction
+x, y, d = map(int, input().split())
+
+# take map information
+for i in range(n):
+    board[i] = list(map(int,input().split()))
+
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+
+# mark initial position as 1
+board[x][y] = 1
+
+def turn_left():
+    global d
+    d -= 1
+    if d == -1:
+        d = 3
+
+cnt = 1
+turn_time = 0
+
+while True:
+
+    # turn left first
+    turn_left()
+    nx = x + dx[d]
+    ny = y + dy[d]
+
+    # if there is 0 in front of turned direction, move
+    if board[nx][ny] == 0:
+        board[nx][ny] = 1
+        x, y = nx, ny
+        cnt += 1
+        turn_time = 0
+        continue
+
+    # if it is 1, turn left
+    else:
+        turn_time += 1
+
+    # if there is no 0 in 4 directions
+    if turn_time == 4:
+        nx = x - dx[d]
+        ny = x - dy[d]
+
+        # move back 
+        if board[nx][ny] == 0:
+            x = nx
+            y = ny
+        # if it's 1, end
+        else:
+            break
+        turn_time = 0
+
+print(cnt)
+
+# example input
+# 4 4      N X M
+# 1 1 0    x, y and direction
+# 1 1 1 1  map
+# 1 0 0 1
+# 1 1 0 1
+# 1 1 1 1 
+
+# example output
+# 3
