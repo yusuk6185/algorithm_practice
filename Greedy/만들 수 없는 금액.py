@@ -40,9 +40,8 @@ data = list(map(int, input().split()))
 data.sort()
 
 target = 1
-for x in data:
-    if target < x:
+for x in data: # the number smaller than the target can be made
+    if target < x: # break if the target cannot be made
         break
     target += x
-
-print(target)
+    print(target)
