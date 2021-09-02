@@ -27,7 +27,7 @@ def solution(numbers, hand):
 
             # select neareast hand
             if ldist < rdist: 
-                answer += 'L'
+                answer += 'L' 
                 lhand = i
             elif ldist > rdist:
                 answer += 'R'
