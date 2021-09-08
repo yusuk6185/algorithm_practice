@@ -10,11 +10,8 @@ def solution(n):
        n //= 3
        answer += str(rest) # str로 추가하여 값이 더해지지 않음
     
-    i = 0 
-    for idx in range(len(answer) - 1, -1, -1): # str을 reverse 로 출력
-        result += int(answer[idx]) * (3**i) # 3진법을 10진법으로 바꿈
-        i += 1
-
-    return result
+    # str을 reverse 로 출력
+    for index, digit in enumerate(range(len(answer) - 1, -1, -1)):
+        result += int(answer[digit]) * 3**index # 3진법을 10진법으로 바꿈
 
 solution(125)
