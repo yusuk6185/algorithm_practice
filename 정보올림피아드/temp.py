@@ -1,24 +1,33 @@
-def dfs(v, i):
-    visited[v] = True
-
-    for w in adj[v]:
-        if not visited[w]:
-            dfs(w, i)
-        elif w == i:
-            result.append(i)
+INF = int(1e9)
 
 n = int(input())
+a = [[INF] * (n+1) for _ in range(n+1)]
 
-adj = [[] for _ in range(n+1)]
+while True:
+    s1, s2 = map(int, input().split())
+
+    if s1 == -1 and s2 == -2:
+        break
+    a[s1][s2] = 1
+    a[s2][s1] = 1
+
 for i in range(1, n+1):
-    adj[i].append(int(input()))
+    a[i][i] = 0
 
-result = []
+for k in range(1, n+1):
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            if a[i][j] == 1 or a[i][j] == 0:
+                continue
+            elif a[i][j] > a[i][k] + a[k][j]:
+                a[i][j] = a[i][k] + a[k][j]
 
+r = []
 for i in range(1, n+1):
-    visited = [False] * (n+1)
-    dfs(i, i)
+    r.append(max(a[i][1:]))
 
-print(len(result))
-for i in result:
-    print(i)
+m = min(r)
+print(m, r.count(m))
+for i,v in enumerate(r):
+    if v == m:
+        print(i+1, end = ' ')
