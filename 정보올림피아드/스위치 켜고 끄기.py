@@ -1,5 +1,7 @@
 # https://www.acmicpc.net/problem/1244
 
+# 구현, 시뮬레이션
+
 def turn(num):
     if switch[num] == 1:
         switch[num] = 0
