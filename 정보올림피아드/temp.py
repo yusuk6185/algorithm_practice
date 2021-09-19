@@ -1,9 +1,5 @@
-a, b, v = map(int, input().split())
-
-pre_move = (v-a)//(a-b)
-remainder = (v-a)%(a-b)
-
-if remainder == 0:
-    print(pre_move+1)
-else:
-    print(pre_move+2)
+for _ in range(int(input())):
+    H, W, N = map (int, input().split())
+    a = N % H; b = N // H + 1
+    if a == 0 : a = H; b -= 1
+    print((a*100+b))
