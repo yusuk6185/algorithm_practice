@@ -1,3 +1,5 @@
+# https://www.acmicpc.net/problem/10989
+
 import sys
 input = lambda : sys.stdin.readline().rstrip()
 
