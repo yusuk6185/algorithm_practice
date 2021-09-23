@@ -1,14 +1,11 @@
 import sys
-input = lambda : sys.stdin.readline().rstrip()
+input = lambda: sys.stdin.readline().rstrip()
 
 n = int(input())
-result = [0] * 10001
+arr = list(map(int, input().split()))
+arr2 = sorted(list(set(arr)))
+dic = {arr2[i] : i for i in range(len(arr2))}
 
-for i in range(n):
-    num = int(input())
-    result[num] += 1
 
-for i in range(10001):
-    if result[i] != 0:
-        for j in range(result[i]):
-            print(i)
+for i in arr:
+    print(dic[i], end = ' ')
