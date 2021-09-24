@@ -1,11 +1,12 @@
-import sys
-input = lambda: sys.stdin.readline().rstrip()
+# https://www.acmicpc.net/problem/1541
 
-n = int(input())
-arr = list(map(int, input().split()))
-arr2 = sorted(list(set(arr)))
-dic = {arr2[i] : i for i in range(len(arr2))}
+formula = input().split('-')
 
+result = 0
+for i in formula[0].split('+'):
+    result += int(i)
+for i in formula[1:]:
+    for j in i.split('+'):
+        result -= int(j)
 
-for i in arr:
-    print(dic[i], end = ' ')
+print(result)
