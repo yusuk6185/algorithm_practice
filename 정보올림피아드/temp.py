@@ -1,25 +1,17 @@
-while True:
-    s = input()
-    if s == '.':
-        break
-    stk = []
-    temp = True
-    for i in s:
-        if i == '(' or i == '[':
-            stk.append(i)
-        elif i == ')':
-            if not stk or stk[-1] == '[':
-                temp = False
-                break
-            elif stk[-1] == '(':
-                stk.pop()
-        elif i == ']':
-            if not stk or stk[-1] == '(':
-                temp = False
-                break
-            elif stk[-1] == '[':
-                stk.pop()
-    if temp == True and not stk:
-        print('yes')
-    else:
-        print('no')
+# https://www.acmicpc.net/problem/17298
+
+import sys
+input = lambda : sys.stdin.readline().rstrip()
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+stack = []
+answer = [-1] * n
+
+for i in range(len(arr)):
+    while stack and arr[stack[-1]] < arr[i]:
+        answer[stack.pop()] = arr[i]
+    stack.append(i)
+
+print(*answer)    
