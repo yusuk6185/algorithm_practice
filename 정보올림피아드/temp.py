@@ -6,5 +6,5 @@ def solution(phone_book):
             return False
     return True
 
-    
+print('test')
 print(solution(["12","123","1235","567","88"]))
