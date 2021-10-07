@@ -1,20 +1,22 @@
-k, n = map(int, input().split())
-lines = [int(input()) for _ in range(k)]
+n = int(input())
+liquid = sorted(list(map(int, input().split())))
 
-start, end = 1, max(lines)
+left, right = 0, n-1
+answer = liquid[left] + liquid[right]
+al = left
+ar = right
 
-while start <= end:
-    mid = (start + end) // 2
-    total = 0
-    
-    for line in lines:
-        total += line // mid
-    
-    if total >= n:
-        start = mid + 1
-        answer = mid
-
+while left < right:
+    tmp = liquid[left] + liquid[right]
+    if abs(tmp) < abs(answer):
+        answer = tmp
+        al = left
+        ar = right
+        if tmp == 0:
+            break
+    elif tmp < 0:
+        left += 1
     else:
-        end = mid - 1
+        right -= 1
 
-print(answer)
+print(liquid[al], liquid[ar])
