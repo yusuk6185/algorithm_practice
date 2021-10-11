@@ -1,7 +1,9 @@
+# https://www.acmicpc.net/problem/15649
+
 def dfs():
     if len(s) == m:
         print(' '.join(map(str, s)))
-        return
+
     for i in range(1, n+1):
         if visited[i]:
             continue
@@ -9,14 +11,10 @@ def dfs():
         s.append(i)
         dfs()
         s.pop()
-        print(s)
-        print(visited)
         visited[i] = False
-            
 
 n, m = map(int, input().split())
 s = []
 visited = [False] * (n+1)
 
 dfs()
-    
